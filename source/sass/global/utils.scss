@@ -35,6 +35,16 @@
   clip-path: inset(100%);
 }
 
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reset-text {
+  margin: 0;
+}
+
 .scroll-lock-ios {
   position: fixed;
 

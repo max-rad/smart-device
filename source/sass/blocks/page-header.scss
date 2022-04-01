@@ -1,0 +1,56 @@
+.page-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $black-pearl-to-bottom;
+}
+
+.page-header__wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 30px 410px 35px 350px;
+
+  @include vp-1023 {
+    padding: 20px 70px 25px 50px;
+  }
+
+  @include vp-769 {
+    padding: 10px 35px 20px 26px;
+  }
+}
+
+.page-header__logo-wrapper {
+  width: 215px;
+  height: 55px;
+  margin-right: auto;
+
+  @include vp-769 {
+    width: 35px;
+    height: 35px;
+    padding-top: 5px;
+  }
+}
+
+.page-header__logo {
+  display: block;
+  width: 215px;
+  height: 55px;
+
+  @include vp-769 {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.page-header__button-wrapper {
+  margin-left: auto;
+  padding: 5px 0 10px;
+
+  @include vp-1023 {
+    display: none;
+  }
+}
+
+.page-header__button {
+  width: 160px;
+}

@@ -591,6 +591,16 @@ button,
   clip-path: inset(100%);
 }
 
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reset-text {
+  margin: 0;
+}
+
 .scroll-lock-ios {
   position: fixed;
   overflow: hidden;
@@ -619,37 +629,125 @@ button,
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 0 40px;
-  /*@include vp-1439 {
-    padding: 0 32px;
-  }
+  padding: 0 350px;
+}
 
-  @include vp-1023 {
-    padding: 0 24px;
-  }
+.page-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(84.9%, #041827), to(rgba(4, 24, 39, 0)));
+  background: -o-linear-gradient(top, #041827 84.9%, rgba(4, 24, 39, 0) 100%);
+  background: linear-gradient(180deg, #041827 84.9%, rgba(4, 24, 39, 0) 100%);
+}
 
-  @include vp-767 {
-    padding: 0 16px;
-  }*/
+.page-header__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 30px 410px 35px 350px;
+}
+
+.page-header__logo-wrapper {
+  width: 215px;
+  height: 55px;
+  margin-right: auto;
+}
+
+.page-header__logo {
+  display: block;
+  width: 215px;
+  height: 55px;
+}
+
+.page-header__button-wrapper {
+  margin-left: auto;
+  padding: 5px 0 10px;
+}
+
+.page-header__button {
+  width: 160px;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 30px 0 45px;
+  padding: 5px 0 10px;
+}
+
+.navigation__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 0;
+  -webkit-column-gap: 30px;
+  -moz-column-gap: 30px;
+  column-gap: 30px;
+  row-gap: 15px;
+}
+
+.navigation__item {
+  min-width: 225px;
+}
+
+.navigation__link {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  line-height: 18px;
+  color: #f2f5f6;
+}
+
+.navigation__icon-email {
+  margin-right: 15px;
+  fill: #00b2ff;
+}
+
+.navigation__icon-phone {
+  margin-right: 15px;
+  fill: #00b2ff;
 }
 
 .btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin: 10px 0;
-  padding: 10px 20px;
-  color: #ffffff;
-  background-color: #2c39f2;
-  border: none;
+  padding: 11px 15px;
+  font-family: "Roboto Condensed", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f2f5f6;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #f2f5f6;
   cursor: pointer;
   -webkit-transition: opacity 0.3s ease;
   -o-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }
 
-.btn--red {
-  background-color: #ff1553;
+.btn--deep-sky-blue {
+  color: #00b2ff;
+  border: 1px solid #00b2ff;
 }
 
 .btn:disabled {
@@ -777,6 +875,11 @@ button,
 } */
 
 @media (hover: hover), screen and (min-width: 0\0) {
+  .navigation__link:hover,
+  .navigation__link:focus {
+    opacity: 0.8;
+  }
+
   .btn:hover,
   .btn:focus {
     opacity: 0.8;
@@ -784,6 +887,48 @@ button,
 }
 
 @media (max-width: 1023px) {
+  .container {
+    padding: 0 50px;
+  }
+
+  .page-header__wrapper {
+    padding: 20px 70px 25px 50px;
+  }
+
+  .page-header__button-wrapper {
+    display: none;
+  }
+
+  .navigation {
+    margin: 0;
+    padding: 0 0 15px;
+  }
+
+  .navigation__list {
+    -webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+    padding: 0;
+  }
+
+  .navigation__item {
+    min-width: unset;
+    max-height: 40px;
+    padding: 10px;
+  }
+
+  .navigation__link span {
+    display: none;
+  }
+
+  .navigation__icon-email {
+    margin-right: 0;
+  }
+
+  .navigation__icon-phone {
+    margin-right: 0;
+  }
+
   .modal__wrapper {
     padding: 60px 16px;
   }
@@ -795,5 +940,30 @@ button,
 
   .modal--fit-content .modal__content {
     width: 100%;
+  }
+}
+
+@media (max-width: 769px) {
+  .container {
+    padding: 0 25px;
+  }
+
+  .page-header__wrapper {
+    padding: 10px 35px 20px 26px;
+  }
+
+  .page-header__logo-wrapper {
+    width: 35px;
+    height: 35px;
+    padding-top: 5px;
+  }
+
+  .page-header__logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navigation {
+    padding: 0;
   }
 }
