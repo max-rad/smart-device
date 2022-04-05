@@ -97,13 +97,19 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_ios_vh_fix__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/ios-vh-fix */ "./js/utils/ios-vh-fix.js");
 /* harmony import */ var _modules_modals_init_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals/init-modals */ "./js/modules/modals/init-modals.js");
+/* harmony import */ var _modules_accordion_accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/accordion/accordion */ "./js/modules/accordion/accordion.js");
+/* harmony import */ var _modules_show_text_show_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/show-text/show-text */ "./js/modules/show-text/show-text.js");
+
+
 
  // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', function () {
   // Utils
   // ---------------------------------
-  Object(_utils_ios_vh_fix__WEBPACK_IMPORTED_MODULE_0__["iosVhFix"])(); // Modules
+  Object(_utils_ios_vh_fix__WEBPACK_IMPORTED_MODULE_0__["iosVhFix"])();
+  Object(_modules_show_text_show_text__WEBPACK_IMPORTED_MODULE_3__["showText"])();
+  Object(_modules_accordion_accordion__WEBPACK_IMPORTED_MODULE_2__["initAccordion"])(); // Modules
   // ---------------------------------
   // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
   // в load следует добавить скрипты, не участвующие в работе первого экрана
@@ -129,6 +135,47 @@ window.addEventListener('DOMContentLoaded', function () {
 // breakpoint.addListener(breakpointChecker);
 // breakpointChecker();
 // используйте .closest(el)
+
+/***/ }),
+
+/***/ "./js/modules/accordion/accordion.js":
+/*!*******************************************!*\
+  !*** ./js/modules/accordion/accordion.js ***!
+  \*******************************************/
+/*! exports provided: initAccordion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAccordion", function() { return initAccordion; });
+var initAccordion = function initAccordion() {
+  var accordionToggle = document.querySelectorAll('[data-accordion="toggle"]');
+  var accordionItem = document.querySelectorAll('[data-accordion="accordion"]');
+
+  for (var i = 0; i < accordionItem.length; i++) {
+    accordionItem[i].classList.remove('accordion__item--no-js');
+  }
+
+  var _loop = function _loop(_i) {
+    accordionToggle[_i].addEventListener('click', function (evt) {
+      evt.preventDefault();
+
+      for (var j = 0; j < accordionItem.length; j++) {
+        if (accordionItem[j].classList.contains('accordion__item--active')) {
+          accordionItem[j].classList.remove('accordion__item--active');
+        } else if (_i === j) {
+          accordionItem[j].classList.toggle('accordion__item--active');
+        }
+      }
+    });
+  };
+
+  for (var _i = 0; _i < accordionToggle.length; _i++) {
+    _loop(_i);
+  }
+};
+
+
 
 /***/ }),
 
@@ -421,6 +468,37 @@ var Modals = /*#__PURE__*/function () {
 
   return Modals;
 }();
+
+/***/ }),
+
+/***/ "./js/modules/show-text/show-text.js":
+/*!*******************************************!*\
+  !*** ./js/modules/show-text/show-text.js ***!
+  \*******************************************/
+/*! exports provided: showText */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showText", function() { return showText; });
+var showText = function showText() {
+  var content = document.querySelector('[data-show-text="content"]');
+  var button = document.querySelector('[data-show-text="button"]');
+  var buttonText = button.textContent;
+  content.classList.remove('about__content-wrapper--no-js');
+  button.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    content.classList.toggle('about__content-wrapper--show');
+
+    if (button.textContent === buttonText) {
+      button.textContent = 'Скрыть';
+    } else {
+      button.textContent = 'Подробнее';
+    }
+  });
+};
+
+
 
 /***/ }),
 

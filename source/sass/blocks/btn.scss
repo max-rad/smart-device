@@ -1,14 +1,6 @@
 .btn {
   display: inline-flex;
-  padding: 11px 15px;
-
-  font-family: $ff-roboto-condensed;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  justify-content: center;
 
   color: $color-alice-blue;
 
@@ -19,8 +11,15 @@
   transition: opacity $trans-default;
 
   &--deep-sky-blue {
-    color: $color-deep-sky-blue;
+    background-color: $color-deep-sky-blue;
+    border: none;
+    border-radius: 3px;
+  }
+
+  &--deep-sky-blue-border {
     border: 1px solid $color-deep-sky-blue;
+    color: $color-deep-sky-blue;
+    border-radius: 3px;
   }
 
   &:disabled {
