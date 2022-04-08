@@ -26,7 +26,7 @@
 .footer-contacts__item {
   display: inline-flex;
 
-  @include  vp-769 {
+  @include vp-769 {
     margin-bottom: 10px;
 
     &:last-child {

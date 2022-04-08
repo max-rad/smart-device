@@ -122,31 +122,11 @@ const validation = () => {
         phoneField.setCustomValidity('');
         phoneField.reportValidity();
         if (isStorageSupport) {
-          localStorage.clear();
-          /* localStorage.setItem('name', nameField.value);
-          localStorage.setItem('phone', phoneField.value); */
-        }
-      }
-    });
-
-    /* form.addEventListener('submit', (evt) => {
-      if (nameField.value === '') {
-        evt.preventDefault();
-        nameField.setCustomValidity('Name is required.');
-        nameField.reportValidity();
-        nameField.focus();
-      } else if (phoneField === '') {
-        evt.preventDefault();
-        phoneField.setCustomValidity('Phone is required.');
-        phoneField.reportValidity();
-        phoneField.focus();
-      } else {
-        if (isStorageSupport) {
           localStorage.setItem('name', nameField.value);
           localStorage.setItem('phone', phoneField.value);
         }
       }
-    }); */
+    });
   }
 };
 

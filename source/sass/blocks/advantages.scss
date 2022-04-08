@@ -1,5 +1,5 @@
 .advantages {
-
+  background-color: $color-lighter-alice-blue;
 }
 
 .advantages__wrapper {
@@ -118,7 +118,7 @@
     }
   }
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
