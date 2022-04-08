@@ -113,20 +113,22 @@
     font-size: 14px;
     line-height: 16px;
   }
-}
 
-.promo__button-text {
-  &--mobile {
-    display: none;
+  span {
+    &:last-child {
+      display: none;
+    }
   }
 
   @include vp-769 {
-    &--desktop {
-      display: none;
-    }
+    span {
+      &:first-child {
+        display: none;
+      }
 
-    &--mobile {
-      display: inline;
+      &:last-child {
+        display: inline;
+      }
     }
   }
 }

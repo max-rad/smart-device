@@ -236,8 +236,8 @@
   background: $color-transparent;
   border: none;
   cursor: pointer;
-}
 
-.modal__icon {
-  fill: $color-default-white;
+  svg {
+    fill: $color-default-white;
+  }
 }

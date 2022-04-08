@@ -38,17 +38,19 @@
 }
 
 .catalog__title {
-  &--mobile {
-    display: none;
-  }
-
-  @include vp-769 {
-    &--desktop {
+  span {
+    &:last-child {
       display: none;
     }
 
-    &--mobile {
-      display: inline;
+    @include vp-769 {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: inline;
+      }
     }
   }
 }
