@@ -7,6 +7,9 @@
     <meta name="description" content="Описание проекта">
     <title>ProjectName</title>
     <link rel="stylesheet" href="css/style.min.css">
+    <link rel="preload" as="font" href="fonts/ptmonoregular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="fonts/robotocondensedregular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="fonts/robotocondensedbold.woff2" type="font/woff2" crossorigin="anonymous">
   </head>
   <body>
     <div class="wrapper">
@@ -42,7 +45,7 @@
             </ul>
           </div>
           <div class="page-header__button-wrapper">
-            <a class="btn page-header__button" href="#">Заказать звонок</a>
+            <a class="btn page-header__button" href="#" data-open-modal="feedback">Заказать звонок</a>
           </div>
         </div>
       </header>
@@ -52,7 +55,7 @@
             <div class="promo__content-wrapper">
               <h1 class="reset-text">Печатные платы</h1>
               <p class="reset-text">производство и&nbsp;монтаж, поставка комплектующих, блоков и&nbsp;модулей</p>
-              <a class="btn btn--deep-sky-blue promo_button" href="#">
+              <a class="btn btn--deep-sky-blue promo_button" href="#feedback" data-link="anchor-link">
                 <span class="promo__button-text promo__button-text--desktop">Получить бесплатную консультацию</span>
                 <span class="promo__button-text promo__button-text--mobile">Бесплатная консультация</span>
               </a>
@@ -112,11 +115,14 @@
         </section>
         <section class="catalog">
           <div class="container catalog__wrapper">
-            <h2>Smart Device предлагает следующие товары и услуги</h2>
-            <ul class="catalog__list">
+            <h2 class="reset-text">
+              <span class="catalog__title catalog__title--desktop">Smart Device предлагает следующие товары и услуги</span>
+              <span class="catalog__title catalog__title--mobile">Товары и услуги Smart Device</span>
+            </h2>
+            <ul class="catalog__list reset-list">
               <li class="catalog__item">
                 <article class="goods">
-                  <h3>Производство печатных плат</h3>
+                  <h3 class="reset-text">Производство печатных плат</h3>
                   <div class="goods__image-wrapper">
                     <a class="goods__image-link" href="#">
                       <picture>
@@ -132,18 +138,18 @@
                         <!-- 1x 670px: 2x: 1340px -->
                         <source type="image/webp" media="(max-width: 1023px)" srcset="img/content/catalog/production-tablet.jpg 1x, img/content/catalog/production-tablet@2x.jpg 2x">
                         <!-- 1x 270px: 2x: 5400px -->
-                        <img src="img/content/catalog/production-desktop.jpg" srcset="img/content/catalog/production-desktop@2x.jpg" width="350" height="650" alt="Печатная плата">
+                        <img src="img/content/catalog/production-desktop.jpg" srcset="img/content/catalog/production-desktop@2x.jpg" width="350" height="650" alt="Печатная плата" loading="lazy">
                       </picture>
                     </a>
                   </div>
-                  <a class="btn goods__button" href="#">
+                  <a class="btn btn--deep-sky-blue goods__button" href="#">
                     <span class="visually-hidden">Переход на страницу</span>
                   </a>
                 </article>
               </li>
               <li class="catalog__item">
                 <article class="goods">
-                  <h3>Монтаж печатных плат</h3>
+                  <h3 class="reset-text">Монтаж печатных плат</h3>
                   <div class="goods__image-wrapper">
                     <a class="goods__image-link" href="#">
                       <picture>
@@ -159,18 +165,18 @@
                         <!-- 1x 670px: 2x: 1340px -->
                         <source type="image/webp" media="(max-width: 1023px)" srcset="img/content/catalog/installation-tablet.jpg 1x, img/content/catalog/installation-tablet@2x.jpg 2x">
                         <!-- 1x 270px: 2x: 5400px -->
-                        <img src="img/content/catalog/installation-desktop.jpg" srcset="img/content/catalog/installation-desktop@2x.jpg" width="350" height="650" alt="Печатная плата">
+                        <img src="img/content/catalog/installation-desktop.jpg" srcset="img/content/catalog/installation-desktop@2x.jpg" width="350" height="650" alt="Печатная плата" loading="lazy">
                       </picture>
                     </a>
                   </div>
-                  <a class="btn goods__button" href="#">
+                  <a class="btn btn--deep-sky-blue goods__button" href="#">
                     <span class="visually-hidden">Переход на страницу</span>
                   </a>
                 </article>
               </li>
               <li class="catalog__item">
                 <article class="goods">
-                  <h3>Комплектующие для светотехники</h3>
+                  <h3 class="reset-text">Комплектующие для светотехники</h3>
                   <div class="goods__image-wrapper">
                     <a class="goods__image-link" href="#">
                       <picture>
@@ -186,11 +192,11 @@
                         <!-- 1x 670px: 2x: 1340px -->
                         <source type="image/webp" media="(max-width: 1023px)" srcset="img/content/catalog/accessories-tablet.jpg 1x, img/content/catalog/accessories-tablet@2x.jpg 2x">
                         <!-- 1x 270px: 2x: 5400px -->
-                        <img src="img/content/catalog/accessories-desktop.jpg" srcset="img/content/catalog/accessories-desktop@2x.jpg" width="350" height="650" alt="Печатная плата">
+                        <img src="img/content/catalog/accessories-desktop.jpg" srcset="img/content/catalog/accessories-desktop@2x.jpg" width="350" height="650" alt="Печатная плата" loading="lazy">
                       </picture>
                     </a>
                   </div>
-                  <a class="btn goods__button" href="#">
+                  <a class="btn btn--deep-sky-blue goods__button" href="#">
                     <span class="visually-hidden">Переход на страницу</span>
                   </a>
                 </article>
@@ -198,31 +204,37 @@
             </ul>
           </div>
         </section>
-        <section class="feedback">
+        <section class="feedback" id="feedback">
           <div class="container feedback__wrapper">
-            <h2>Остались вопросы? Задайте их нам!</h2>
-            <p>Мы проконсультируем Вас бесплатно</p>
-            <form action="https://echo.htmlacademy.ru" method="post">
-              <ul class="feedback__list">
-                <li class="feedback__item">
-                  <label for="name-field">Имя</label>
-                  <input id="name-field" type="text" placeholder="Имя" required>
-                </li>
-                <li class="feedback__item">
-                  <label for="phone-field">Телефон</label>
-                  <input id="phone-field" type="tel" placeholder="Телефон" required>
-                </li>
-                <li class="feedback__item">
-                  <label for="textarea-field">Вопрос</label>
-                  <textarea id="textarea-field" placeholder="Ваш вопрос"></textarea>
-                </li>
-              </ul>
-              <p class="feedback__checkbox">
-                <input class="visually-hidden" type="checkbox" id="checkbox-field" required checked>
-                <label for="checkbox-field">Я согласен на обработку персональных данных</label>
-              </p>
-              <button class="btn feedback__button" type="submit">Задать вопрос</button>
-            </form>
+            <div class="feedback__content-wrapper">
+              <h2 class="reset-text">Остались вопросы? Задайте их нам!</h2>
+              <p class="reset-text">Мы проконсультируем Вас бесплатно</p>
+              <form action="https://echo.htmlacademy.ru" method="post" data-form="feedback-form">
+                <div class="feedback__form-wrapper">
+                  <ul class="feedback__list reset-list">
+                    <li class="feedback__item">
+                      <label class="visually-hidden" for="name-field">Имя</label>
+                      <input id="name-field" type="text" placeholder="Имя" data-input="name-field" required>
+                    </li>
+                    <li class="feedback__item">
+                      <label class="visually-hidden" for="phone-field">Телефон</label>
+                      <input id="phone-field" type="tel" placeholder="Телефон" maxlength="16" data-input="phone-field" required>
+                    </li>
+                    <li class="feedback__item">
+                      <label class="visually-hidden" for="textarea-field">Вопрос</label>
+                      <textarea id="textarea-field" placeholder="Ваш вопрос"></textarea>
+                    </li>
+                  </ul>
+                  <div class="feedback__checkbox reset-text">
+                    <input class="visually-hidden" type="checkbox" id="checkbox-field" data-input="checkbox-field" required checked>
+                    <label for="checkbox-field">Я согласен на обработку персональных данных</label>
+                  </div>
+                  <div class="feedback__button-wrapper">
+                    <button class="btn btn--black-pearl feedback__button" type="submit" data-button="button">Задать вопрос</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </section>
       </main>
@@ -268,32 +280,34 @@
                   <h2 class="reset-text">Разделы сайта</h2>
                 </a>
                 <nav class="accordion__content navigation">
-                  <ul class="navigation__list reset-list">
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">О Компании</a>
-                    </li>
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Продукты</a>
-                    </li>
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Производство печатных плат</a>
-                    </li>
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Монтаж печатных плат</a>
-                    </li>
-                  </ul>
+                  <div class="navigation__list-wrapper">
+                    <ul class="navigation__list reset-list">
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">О Компании</a>
+                      </li>
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Продукты</a>
+                      </li>
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Производство печатных плат</a>
+                      </li>
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Монтаж печатных плат</a>
+                      </li>
+                    </ul>
 
-                  <ul class="navigation__list reset-list">
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Комплектующие</a>
-                    </li>
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Доставка</a>
-                    </li>
-                    <li class="navigation__item">
-                      <a class="navigation__link" href="#">Контакты</a>
-                    </li>
-                  </ul>
+                    <ul class="navigation__list reset-list">
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Комплектующие</a>
+                      </li>
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Доставка</a>
+                      </li>
+                      <li class="navigation__item">
+                        <a class="navigation__link" href="#">Контакты</a>
+                      </li>
+                    </ul>
+                  </div>
                 </nav>
               </li>
               <li class="accordion__item accordion__item--contacts accordion__item--no-js" data-accordion="accordion">
@@ -323,32 +337,40 @@
       </footer>
     </div>
 
-    <div class="modal modal--preload">
+    <div class="modal modal--preload" data-modal="feedback">
       <div class="modal__wrapper">
         <div class="modal__overlay" data-close-modal></div>
         <div class="modal__content">
-          <h2>Закажите звонок</h2>
-          <p>Оставьте контакты, мы проконсультируем вас бесплатно в удобное время</p>
-          <form action="https://echo.htmlacademy.ru" method="post">
-            <ul class="modal__list">
-              <li class="modal__item">
-                <label for="modal-name-field">Имя</label>
-                <input id="modal-name-field" type="text" placeholder="Имя" required>
-              </li>
-              <li class="modal__item">
-                <label for="modal-phone-field">Телефон</label>
-                <input id="modal-phone-field" type="tel" placeholder="Телефон" required>
-              </li>
-              <li class="modal__item">
-                <label for="modal-textarea-field">Вопрос</label>
-                <textarea id="modal-textarea-field" placeholder="Ваш вопрос"></textarea>
-              </li>
-            </ul>
-            <p class="modal__checkbox">
-              <input class="visually-hidden" type="checkbox" id="modal-checkbox-field" required checked>
-              <label for="modal-checkbox-field">Я согласен на обработку персональных данных</label>
-            </p>
-            <button class="btn modal__button" type="submit">Задать вопрос</button>
+          <h2 class="reset-text">Закажите звонок</h2>
+          <p class="reset-text">Оставьте контакты, мы&nbsp;проконсультируем вас бесплатно в&nbsp;удобное время</p>
+          <form action="https://echo.htmlacademy.ru" method="post" data-form="modal-form">
+            <div class="modal__form-wrapper">
+              <ul class="modal__list reset-list">
+                <li class="modal__item">
+                  <label class="visually-hidden" for="modal-name-field">Имя</label>
+                  <input id="modal-name-field" type="text" placeholder="Имя" data-input="name-field" required>
+                </li>
+                <li class="modal__item">
+                  <label class="visually-hidden" for="modal-phone-field">Телефон</label>
+                  <input id="modal-phone-field" type="tel" placeholder="Телефон" maxlength="16" data-input="phone-field" required>
+                </li>
+                <li class="modal__item">
+                  <label class="visually-hidden" for="modal-textarea-field">Вопрос</label>
+                  <textarea id="modal-textarea-field" placeholder="Ваш вопрос"></textarea>
+                </li>
+              </ul>
+              <div class="modal__checkbox">
+                <input class="visually-hidden" type="checkbox" id="modal-checkbox-field" data-input="checkbox-field" required checked>
+                <label for="modal-checkbox-field">Я согласен на обработку персональных данных</label>
+              </div>
+              <button class="btn btn--black-pearl modal__button" type="submit" data-button="button">Отправить</button>
+              <button class="btn-reset modal__close-button" type="button" data-close-modal>
+                <svg class="modal__icon" width="20" height="20">
+                  <use xlink:href="img/sprite_auto.svg#icon-close"></use>
+                </svg>
+                <span class="visually-hidden">Закрыть</span>
+              </button>
+            </div>
           </form>
         </div>
       </div>

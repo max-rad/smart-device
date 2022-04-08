@@ -1,0 +1,69 @@
+.goods {
+  position: relative;
+
+  h3 {
+    position: absolute;
+    top: 47px;
+    left: 40px;
+    max-width: 170px;
+    font-family: $ff-roboto-condensed;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: $color-default-white;
+
+    @include vp-1023 {
+      top: 37px;
+      left: 45px;
+      max-width: 150px;
+    }
+
+    @include vp-769 {
+      top: 26px;
+      left: 30px;
+      max-width: 135px;
+      font-size: 18px;
+    }
+  }
+}
+
+.goods__image-wrapper {
+  background-color: $color-tangaroa;
+
+  img {
+    width: 350px;
+    height: 650px;
+
+    @include vp-1023 {
+      width: 670px;
+      height: 250px;
+    }
+
+    @include vp-769 {
+      width: 270px;
+      height: 250px;
+    }
+  }
+}
+
+.goods__image-link {
+  display: block;
+}
+
+.goods__button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  padding: 30px;
+  background-image: url("../img/svg/icon-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  @include vp-769 {
+    width: 40px;
+    height: 40px;
+    padding: 20px;
+  }
+}

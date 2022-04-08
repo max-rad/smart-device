@@ -4,22 +4,28 @@
 
   color: $color-alice-blue;
 
-  background-color: $color-transparent;
   border: 1px solid $color-alice-blue;
+  background-color: $color-transparent;
   cursor: pointer;
 
   transition: opacity $trans-default;
 
   &--deep-sky-blue {
-    background-color: $color-deep-sky-blue;
     border: none;
     border-radius: 3px;
+    background-color: $color-deep-sky-blue;
   }
 
   &--deep-sky-blue-border {
     border: 1px solid $color-deep-sky-blue;
-    color: $color-deep-sky-blue;
     border-radius: 3px;
+    color: $color-deep-sky-blue;
+  }
+
+  &--black-pearl {
+    border: none;
+    background-color: $color-black-pearl;
+    color: $color-default-white;
   }
 
   &:disabled {

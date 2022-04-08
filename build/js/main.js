@@ -99,6 +99,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modals_init_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals/init-modals */ "./js/modules/modals/init-modals.js");
 /* harmony import */ var _modules_accordion_accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/accordion/accordion */ "./js/modules/accordion/accordion.js");
 /* harmony import */ var _modules_show_text_show_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/show-text/show-text */ "./js/modules/show-text/show-text.js");
+/* harmony import */ var _modules_scroll_scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/scroll/scroll */ "./js/modules/scroll/scroll.js");
+/* harmony import */ var _modules_modals_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/modals/validation */ "./js/modules/modals/validation.js");
+
+
 
 
 
@@ -108,6 +112,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // Utils
   // ---------------------------------
   Object(_utils_ios_vh_fix__WEBPACK_IMPORTED_MODULE_0__["iosVhFix"])();
+  Object(_modules_scroll_scroll__WEBPACK_IMPORTED_MODULE_4__["smoothScroll"])();
   Object(_modules_show_text_show_text__WEBPACK_IMPORTED_MODULE_3__["showText"])();
   Object(_modules_accordion_accordion__WEBPACK_IMPORTED_MODULE_2__["initAccordion"])(); // Modules
   // ---------------------------------
@@ -116,6 +121,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('load', function () {
     Object(_modules_modals_init_modals__WEBPACK_IMPORTED_MODULE_1__["initModals"])();
+    Object(_modules_modals_validation__WEBPACK_IMPORTED_MODULE_5__["validation"])();
   });
 }); // ---------------------------------
 // ❗❗❗ обязательно установите плагины eslint, stylelint, editorconfig в редактор кода.
@@ -386,6 +392,7 @@ var Modals = /*#__PURE__*/function () {
 
       var modalName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this._modalName;
       var modal = document.querySelector("[data-modal=\"".concat(modalName, "\"]"));
+      var nameField = modal.querySelector('[data-input="name-field"]');
 
       if (!modal || modal.classList.contains('is-active')) {
         return;
@@ -420,6 +427,7 @@ var Modals = /*#__PURE__*/function () {
 
         _this._autoPlay(modal);
 
+        nameField.focus();
         document.addEventListener('click', _this._documentClickHandler);
       }, this._eventTimeout);
     }
@@ -468,6 +476,221 @@ var Modals = /*#__PURE__*/function () {
 
   return Modals;
 }();
+
+/***/ }),
+
+/***/ "./js/modules/modals/validation.js":
+/*!*****************************************!*\
+  !*** ./js/modules/modals/validation.js ***!
+  \*****************************************/
+/*! exports provided: validation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validation", function() { return validation; });
+var validation = function validation() {
+  var feedbackForm = document.querySelector('[data-form="feedback-form"]');
+  var modalForm = document.querySelector('[data-form="modal-form"]');
+  validateForm(feedbackForm);
+  validateForm(modalForm);
+
+  function validateForm(form) {
+    var isStorageSupport = true;
+    var storageName = '';
+    var storagePhone = '';
+
+    try {
+      storageName = localStorage.getItem('name');
+      storagePhone = localStorage.getItem('phone');
+    } catch (err) {
+      isStorageSupport = false;
+    }
+
+    var nameField = form.querySelector('[data-input="name-field"]');
+    var phoneField = form.querySelector('[data-input="phone-field"]');
+    var checkboxField = form.querySelector('[data-input="checkbox-field"]');
+    var submitButton = form.querySelector('[data-button="button"]');
+    var phonePattern = /^\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+
+    if (storageName) {
+      nameField.value = storageName;
+    }
+
+    if (storagePhone) {
+      phoneField.value = storagePhone;
+    }
+
+    nameField.addEventListener('input', function (evt) {
+      evt.preventDefault();
+      var regName = /^[A-Za-zА-яа-я\s]+$/;
+      var invalidMessage = [];
+      nameField.setCustomValidity('');
+      var name = nameField.value.trim();
+
+      if (name.length !== 0) {
+        if (!regName.test(name)) {
+          invalidMessage.push('The name can contain only alphabetic characters.');
+        }
+      }
+
+      if (name.length > 255) {
+        invalidMessage.push('The name cannot be longer than 255 characters.');
+      }
+
+      if (invalidMessage.length > 0) {
+        nameField.setCustomValidity(invalidMessage.join('\n'));
+      }
+
+      nameField.reportValidity();
+    });
+    phoneField.addEventListener('input', function (evt) {
+      evt.preventDefault();
+      var value = phoneField.value.replace(/\D+/g, '');
+      var phoneLength = 11;
+      var phonePrefix = '+7(';
+      var result = '';
+
+      for (var i = 0; i < value.length && i < phoneLength; i++) {
+        switch (i) {
+          case 0:
+            result += phonePrefix;
+            continue;
+
+          case 4:
+            result += ')';
+            break;
+
+          case 7:
+            result += ' ';
+            break;
+
+          case 9:
+            result += ' ';
+            break;
+
+          default:
+            break;
+        }
+
+        result += value[i];
+      }
+
+      phoneField.value = result;
+    });
+    checkboxField.addEventListener('change', function (evt) {
+      evt.preventDefault();
+      var invalidMessage = '';
+      checkboxField.setCustomValidity('');
+
+      if (!checkboxField.checked) {
+        invalidMessage = 'Consent required';
+      }
+
+      if (invalidMessage.length > 0) {
+        checkboxField.setCustomValidity(invalidMessage);
+      }
+
+      checkboxField.reportValidity();
+    });
+    submitButton.addEventListener('click', function (evt) {
+      if (nameField.value === '') {
+        evt.preventDefault();
+        nameField.setCustomValidity('Name is required.');
+        nameField.reportValidity();
+        nameField.focus();
+      } else if (phoneField === '') {
+        evt.preventDefault();
+        phoneField.setCustomValidity('Phone is required.');
+        phoneField.reportValidity();
+        phoneField.focus();
+      } else if (!phonePattern.test(phoneField.value)) {
+        evt.preventDefault();
+        phoneField.setCustomValidity('Invalid phone number.');
+        phoneField.reportValidity();
+        phoneField.focus();
+      } else {
+        phoneField.setCustomValidity('');
+        phoneField.reportValidity();
+
+        if (isStorageSupport) {
+          localStorage.clear();
+          /* localStorage.setItem('name', nameField.value);
+          localStorage.setItem('phone', phoneField.value); */
+        }
+      }
+    });
+    /* form.addEventListener('submit', (evt) => {
+      if (nameField.value === '') {
+        evt.preventDefault();
+        nameField.setCustomValidity('Name is required.');
+        nameField.reportValidity();
+        nameField.focus();
+      } else if (phoneField === '') {
+        evt.preventDefault();
+        phoneField.setCustomValidity('Phone is required.');
+        phoneField.reportValidity();
+        phoneField.focus();
+      } else {
+        if (isStorageSupport) {
+          localStorage.setItem('name', nameField.value);
+          localStorage.setItem('phone', phoneField.value);
+        }
+      }
+    }); */
+  }
+};
+
+
+
+/***/ }),
+
+/***/ "./js/modules/scroll/scroll.js":
+/*!*************************************!*\
+  !*** ./js/modules/scroll/scroll.js ***!
+  \*************************************/
+/*! exports provided: smoothScroll */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smoothScroll", function() { return smoothScroll; });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var smoothScroll = function smoothScroll() {
+  var anchorLinks = document.querySelectorAll('[data-link]');
+
+  var _iterator = _createForOfIteratorHelper(anchorLinks),
+      _step;
+
+  try {
+    var _loop = function _loop() {
+      var anchor = _step.value;
+      anchor.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        var anchorHref = anchor.getAttribute('href').substring(1);
+        document.getElementById(anchorHref).scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
+        });
+      });
+    };
+
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+};
+
+
 
 /***/ }),
 

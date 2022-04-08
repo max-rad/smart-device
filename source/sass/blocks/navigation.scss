@@ -1,4 +1,10 @@
 .navigation {
+  @include vp-769 {
+    padding: 0 25px 19px;
+  }
+}
+
+.navigation__list-wrapper {
   display: flex;
   flex-wrap: wrap;
   column-gap: 30px;
@@ -6,10 +12,6 @@
 
   @include vp-1023 {
     flex-direction: column;
-  }
-
-  @include vp-769 {
-    padding: 0 25px 19px;
   }
 }
 
