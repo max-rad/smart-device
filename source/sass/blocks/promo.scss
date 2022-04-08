@@ -115,18 +115,16 @@
   }
 
   span {
-    &:last-child {
+    + span {
       display: none;
     }
   }
 
   @include vp-769 {
     span {
-      &:first-child {
-        display: none;
-      }
+      display: none;
 
-      &:last-child {
+      + span {
         display: inline;
       }
     }
