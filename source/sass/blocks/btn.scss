@@ -7,6 +7,7 @@
   border: 1px solid $color-alice-blue;
   background-color: $color-transparent;
   cursor: pointer;
+  user-select: none;
 
   transition: opacity $trans-default;
 

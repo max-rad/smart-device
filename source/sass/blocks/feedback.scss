@@ -157,6 +157,11 @@
     &::placeholder {
       color: $color-default-white;
     }
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
   }
 
   textarea {
@@ -180,6 +185,11 @@
 
     &::placeholder {
       color: $color-default-white;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
     }
   }
 }
@@ -243,6 +253,7 @@
     line-height: 16px;
     color: $color-default-white;
     opacity: 0.8;
+    cursor: pointer;
   }
 }
 

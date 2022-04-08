@@ -198,16 +198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initModals", function() { return initModals; });
 /* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modals */ "./js/modules/modals/modals.js");
 
-var modals; // Здесь реализован пример открытия модалки через колбэк закрытия
-// const openModalInCloseCallback = (name, context = this) => {
-//   context._enableScrolling = false;
-//   context._setSettings('default');
-//   modals.open(name);
-// };
-// closeCallback() {
-//   openModalInCloseCallback('modal-5');
-// },
-
+var modals;
 var settings = {
   'default': {
     preventDefault: true,
@@ -511,7 +502,7 @@ var validation = function validation() {
     var phoneField = form.querySelector('[data-input="phone-field"]');
     var checkboxField = form.querySelector('[data-input="checkbox-field"]');
     var submitButton = form.querySelector('[data-button="button"]');
-    var phonePattern = /^\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+    var phonePattern = /^\+7\([0-9]{3}\)[0-9]{3}\s[0-9]{2}\s[0-9]{2}$/;
 
     if (storageName) {
       nameField.value = storageName;
