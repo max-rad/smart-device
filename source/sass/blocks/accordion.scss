@@ -57,8 +57,7 @@
         padding: 21px 75px 18px 25px;
 
         &::after {
-          right: 27px;
-          background-image: url("../img/svg/icon-minus.svg");
+          content: none;
         }
       }
 
