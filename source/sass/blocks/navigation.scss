@@ -1,5 +1,5 @@
 .navigation {
-  @include vp-769 {
+  @include vp-767 {
     padding: 0 25px 19px;
   }
 }
@@ -31,7 +31,7 @@
   display: block;
   color: rgba($color-default-white, 0.7);
 
-  @include vp-769 {
+  @include vp-767 {
     font-size: 14px;
     line-height: 19px;
   }

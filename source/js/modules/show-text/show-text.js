@@ -9,7 +9,7 @@ const showText = () => {
     evt.preventDefault();
     content.classList.toggle('about__content-wrapper--show');
     if (button.textContent === buttonText) {
-      button.textContent = 'Скрыть';
+      button.textContent = 'Свернуть';
     } else {
       button.textContent = 'Подробнее';
     }

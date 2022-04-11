@@ -158,26 +158,40 @@ var initAccordion = function initAccordion() {
   var accordionToggle = document.querySelectorAll('[data-accordion="toggle"]');
   var accordionItem = document.querySelectorAll('[data-accordion="accordion"]');
 
-  for (var i = 0; i < accordionItem.length; i++) {
-    accordionItem[i].classList.remove('accordion__item--no-js');
+  var _loop = function _loop(i) {
+    window.addEventListener('resize', function () {
+      if (window.innerWidth < 768) {
+        accordionToggle[i].tabIndex = 0;
+      } else {
+        accordionToggle[i].tabIndex = -1;
+      }
+    });
+  };
+
+  for (var i = 0; i < accordionToggle.length; i++) {
+    _loop(i);
   }
 
-  var _loop = function _loop(_i) {
-    accordionToggle[_i].addEventListener('click', function (evt) {
+  for (var _i = 0; _i < accordionItem.length; _i++) {
+    accordionItem[_i].classList.remove('accordion__item--no-js');
+  }
+
+  var _loop2 = function _loop2(_i2) {
+    accordionToggle[_i2].addEventListener('click', function (evt) {
       evt.preventDefault();
 
       for (var j = 0; j < accordionItem.length; j++) {
         if (accordionItem[j].classList.contains('accordion__item--active')) {
           accordionItem[j].classList.remove('accordion__item--active');
-        } else if (_i === j) {
+        } else if (_i2 === j) {
           accordionItem[j].classList.toggle('accordion__item--active');
         }
       }
     });
   };
 
-  for (var _i = 0; _i < accordionToggle.length; _i++) {
-    _loop(_i);
+  for (var _i2 = 0; _i2 < accordionToggle.length; _i2++) {
+    _loop2(_i2);
   }
 };
 
@@ -700,7 +714,7 @@ var showText = function showText() {
     content.classList.toggle('about__content-wrapper--show');
 
     if (button.textContent === buttonText) {
-      button.textContent = 'Скрыть';
+      button.textContent = 'Свернуть';
     } else {
       button.textContent = 'Подробнее';
     }

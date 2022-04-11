@@ -3,20 +3,21 @@
 }
 
 .catalog__wrapper {
-  padding: 65px 350px 140px;
+  padding: 65px 75px 140px;
 
   @include vp-1023 {
     padding: 55px 50px 75px;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     padding: 47px 25px 86px;
   }
 
   h2 {
     display: flex;
     min-width: 500px;
-    margin-bottom: 54px;
+    max-width: 1220px;
+    margin: 0 auto 54px;
     font-family: $ff-roboto-condensed;
     font-weight: 400;
     font-size: 36px;
@@ -28,7 +29,7 @@
       margin-bottom: 38px;
     }
 
-    @include vp-769 {
+    @include vp-767 {
       margin-bottom: 29px;
       padding-right: 10px;
       font-size: 28px;
@@ -42,7 +43,7 @@
     display: none;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     &--desktop {
       display: none;
     }
@@ -55,12 +56,12 @@
 
 .catalog__list {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  column-gap: 85px;
-  row-gap: 85px;
+  column-gap: 4.8%;
 
   @include vp-1023 {
+    flex-direction: column;
+    align-items: center;
     column-gap: 30px;
     row-gap: 30px;
   }
@@ -68,4 +69,17 @@
 
 .catalog__item {
   position: relative;
+  max-width: 350px;
+  height: 650px;
+
+  @include vp-1023 {
+    width: 670px;
+    max-width: unset;
+    height: 250px;
+  }
+
+  @include vp-767 {
+    width: 100%;
+    max-width: 670px;
+  }
 }

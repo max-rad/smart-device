@@ -11,7 +11,7 @@
     grid-row-end: 3;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     display: flex;
     flex-direction: column;
   }
@@ -22,7 +22,7 @@
   grid-template-columns: 1fr 345px;
   column-gap: 30px;
 
-  @include vp-769 {
+  @include vp-767 {
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgba($color-lighter-alice-blue, 0.7);
@@ -45,7 +45,7 @@
     }
   }
 
-  @include vp-769 {
+  @include vp-767 {
     border-bottom: 1px solid rgba($color-lighter-alice-blue, 0.7);
 
     &:last-child {
@@ -88,11 +88,13 @@
   margin-bottom: 22px;
   padding-top: 7px;
   color: $color-default-white;
+  cursor: default;
 
-  @include vp-769 {
+  @include vp-767 {
     position: relative;
     margin-bottom: 0;
     padding: 21px 75px 21px 25px;
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -119,7 +121,7 @@
 }
 
 .accordion__content {
-  @include vp-769 {
+  @include vp-767 {
     display: none;
   }
 }

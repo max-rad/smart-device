@@ -2,6 +2,16 @@ const initAccordion = () => {
   const accordionToggle = document.querySelectorAll('[data-accordion="toggle"]');
   const accordionItem = document.querySelectorAll('[data-accordion="accordion"]');
 
+  for (let i = 0; i < accordionToggle.length; i++) {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 768) {
+        accordionToggle[i].tabIndex = 0;
+      } else {
+        accordionToggle[i].tabIndex = -1;
+      }
+    });
+  }
+
   for (let i = 0; i < accordionItem.length; i++) {
     accordionItem[i].classList.remove('accordion__item--no-js');
   }

@@ -4,7 +4,7 @@
     margin-right: 5px;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     margin-right: 0;
   }
 }
@@ -16,7 +16,7 @@
   column-gap: 30px;
   row-gap: 8px;
 
-  @include vp-769 {
+  @include vp-767 {
     padding: 0 25px 19px;
     column-gap: unset;
     row-gap: unset;
@@ -26,7 +26,7 @@
 .footer-contacts__item {
   display: inline-flex;
 
-  @include vp-769 {
+  @include vp-767 {
     margin-bottom: 10px;
 
     &:last-child {
@@ -37,7 +37,7 @@
   &--address {
     color: rgba($color-default-white, 0.7);
 
-    @include vp-769 {
+    @include vp-767 {
       font-size: 14px;
       line-height: 19px;
       margin-bottom: 20px;
@@ -49,7 +49,7 @@
   display: block;
   color: rgba($color-default-white, 0.7);
 
-  @include vp-769 {
+  @include vp-767 {
     font-size: 14px;
     line-height: 19px;
   }

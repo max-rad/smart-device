@@ -1,5 +1,13 @@
 .about {
-  position: relative;
+  padding: 0 75px 100px;
+
+  @include vp-1023 {
+    padding: 0 50px 80px 46px;
+  }
+
+  @include vp-767 {
+    padding: 0 25px 80px;
+  }
 }
 
 .about__wrapper {
@@ -7,16 +15,15 @@
   grid-template-columns: 150px 1fr;
   justify-content: center;
   column-gap: 100px;
-  padding: 0 350px 100px;
+  max-width: 1220px;
+  padding: 0;
 
   @include vp-1023 {
-    padding: 0 50px 80px 46px;
     column-gap: 29px;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     display: block;
-    padding: 0 25px 80px;
   }
 
   &::before {
@@ -24,7 +31,7 @@
     display: block;
     width: 150px;
     height: 320px;
-    background-image: url("../../img/content/about/year.jpg");
+    background-image: url("../img/content/about/year.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: 0 0;
@@ -33,12 +40,12 @@
       margin-top: 5px;
     }
 
-    @include vp-769 {
+    @include vp-767 {
       display: none;
     }
 
     @include retina {
-      background-image: url("../../img/content/about/year@2x.jpg");
+      background-image: url("../img/content/about/year@2x.png");
     }
   }
 }
@@ -52,7 +59,7 @@
     max-width: unset;
   }
 
-  @include vp-769 {
+  @include vp-767 {
     min-width: 270px;
   }
 
@@ -63,7 +70,7 @@
     font-size: 36px;
     line-height: 51px;
 
-    @include vp-769 {
+    @include vp-767 {
       font-size: 28px;
       line-height: 39px;
     }
@@ -76,14 +83,14 @@
       p:last-child {
         margin-bottom: 21px;
 
-        @include vp-769 {
+        @include vp-767 {
           margin-bottom: 18px;
         }
       }
     }
 
     .about__hide-text {
-      @include vp-769 {
+      @include vp-767 {
         display: inline;
       }
     }
@@ -105,14 +112,14 @@
       p:last-child {
         margin-bottom: 21px;
 
-        @include vp-769 {
+        @include vp-767 {
           margin-bottom: 18px;
         }
       }
     }
 
     .about__hide-text {
-      @include vp-769 {
+      @include vp-767 {
         display: inline;
       }
     }
@@ -138,7 +145,7 @@
   p {
     margin-bottom: 21px;
 
-    @include vp-769 {
+    @include vp-767 {
       margin-bottom: 18px;
       font-size: 14px;
       line-height: 19px;
@@ -151,7 +158,7 @@
 }
 
 .about__hide-text {
-  @include vp-769 {
+  @include vp-767 {
     display: none;
   }
 }
@@ -162,7 +169,7 @@
   p {
     margin-bottom: 21px;
 
-    @include vp-769 {
+    @include vp-767 {
       margin-bottom: 18px;
       font-size: 14px;
       line-height: 19px;
@@ -193,9 +200,16 @@
     cursor: pointer;
     user-select: none;
 
-    @include vp-769 {
+    @include vp-767 {
       width: 160px;
       padding: 8px 15px 9px;
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+      }
     }
   }
 }
