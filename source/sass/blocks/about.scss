@@ -174,19 +174,27 @@
   }
 }
 
-.about__button {
-  width: 180px;
-  padding: 14px 15px 13px;
-  font-family: $ff-roboto-condensed;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.about__button-wrapper {
+  a {
+    display: inline-flex;
+    width: 180px;
+    padding: 14px 15px 13px;
+    font-family: $ff-roboto-condensed;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid $color-deep-sky-blue;
+    border-radius: 3px;
+    color: $color-deep-sky-blue;
+    cursor: pointer;
+    user-select: none;
 
-  @include vp-769 {
-    width: 160px;
-    padding: 8px 15px 9px;
+    @include vp-769 {
+      width: 160px;
+      padding: 8px 15px 9px;
+    }
   }
 }

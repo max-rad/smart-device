@@ -56,13 +56,13 @@
       opacity: 0.8;
     }
   }
+}
 
-  svg {
-    margin-right: 15px;
-    fill: $color-deep-sky-blue;
+.contacts__icon {
+  margin-right: 15px;
+  fill: $color-deep-sky-blue;
 
-    @include vp-1023 {
-      margin-right: 0;
-    }
+  @include vp-1023 {
+    margin-right: 0;
   }
 }

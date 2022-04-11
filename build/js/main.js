@@ -536,38 +536,52 @@ var validation = function validation() {
       nameField.reportValidity();
     });
     phoneField.addEventListener('input', function (evt) {
-      evt.preventDefault();
-      var value = phoneField.value.replace(/\D+/g, '');
-      var phoneLength = 11;
-      var phonePrefix = '+7(';
-      var result = '';
+      var input = evt.target;
+      var inputNumbersValue = input.value.replace(/\D+/g, '');
+      var selectionStart = input.selectionStart;
+      var outputNumbersValue = '';
 
-      for (var i = 0; i < value.length && i < phoneLength; i++) {
-        switch (i) {
-          case 0:
-            result += phonePrefix;
-            continue;
-
-          case 4:
-            result += ')';
-            break;
-
-          case 7:
-            result += ' ';
-            break;
-
-          case 9:
-            result += ' ';
-            break;
-
-          default:
-            break;
+      if (input.value.length !== selectionStart) {
+        if (evt.data && /\D/g.test(evt.data)) {
+          input.value = inputNumbersValue;
         }
 
-        result += value[i];
+        return;
       }
 
-      phoneField.value = result;
+      if (inputNumbersValue.length > 0) {
+        if (inputNumbersValue[0] !== '7') {
+          inputNumbersValue = '7' + inputNumbersValue;
+        }
+
+        var phonePrefix = '+7';
+        outputNumbersValue = input.value = phonePrefix;
+
+        if (inputNumbersValue.length > 1) {
+          outputNumbersValue += '(' + inputNumbersValue.substring(1, 4);
+        }
+
+        if (inputNumbersValue.length >= 5) {
+          outputNumbersValue += ')' + inputNumbersValue.substring(4, 7);
+        }
+
+        if (inputNumbersValue.length >= 8) {
+          outputNumbersValue += ' ' + inputNumbersValue.substring(7, 9);
+        }
+
+        if (inputNumbersValue.length >= 10) {
+          outputNumbersValue += ' ' + inputNumbersValue.substring(9, 11);
+        }
+      }
+
+      input.value = outputNumbersValue;
+    });
+    phoneField.addEventListener('keydown', function (evt) {
+      var phoneValue = phoneField.value.replace(/\D+/g, '');
+
+      if (evt.keyCode === 8 && phoneValue.length === 1) {
+        phoneField.value = '';
+      }
     });
     checkboxField.addEventListener('change', function (evt) {
       evt.preventDefault();

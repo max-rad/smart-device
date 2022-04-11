@@ -56,34 +56,47 @@ const validation = () => {
     });
 
     phoneField.addEventListener('input', (evt) => {
-      evt.preventDefault();
-      const value = phoneField.value.replace(/\D+/g, '');
-      const phoneLength = 11;
-      const phonePrefix = '+7(';
+      const input = evt.target;
+      let inputNumbersValue = input.value.replace(/\D+/g, '');
+      const selectionStart = input.selectionStart;
+      let outputNumbersValue = '';
 
-      let result = '';
-
-      for (let i = 0; i < value.length && i < phoneLength; i++) {
-        switch (i) {
-          case 0:
-            result += phonePrefix;
-            continue;
-          case 4:
-            result += ')';
-            break;
-          case 7:
-            result += ' ';
-            break;
-          case 9:
-            result += ' ';
-            break;
-          default:
-            break;
+      if (input.value.length !== selectionStart) {
+        if (evt.data && /\D/g.test(evt.data)) {
+          input.value = inputNumbersValue;
         }
-        result += value[i];
+        return;
       }
 
-      phoneField.value = result;
+      if (inputNumbersValue.length > 0) {
+        if (inputNumbersValue[0] !== '7') {
+          inputNumbersValue = '7' + inputNumbersValue;
+        }
+
+        const phonePrefix = '+7';
+        outputNumbersValue = input.value = phonePrefix;
+        if (inputNumbersValue.length > 1) {
+          outputNumbersValue += '(' + inputNumbersValue.substring(1, 4);
+        }
+        if (inputNumbersValue.length >= 5) {
+          outputNumbersValue += ')' + inputNumbersValue.substring(4, 7);
+        }
+        if (inputNumbersValue.length >= 8) {
+          outputNumbersValue += ' ' + inputNumbersValue.substring(7, 9);
+        }
+        if (inputNumbersValue.length >= 10) {
+          outputNumbersValue += ' ' + inputNumbersValue.substring(9, 11);
+        }
+      }
+
+      input.value = outputNumbersValue;
+    });
+
+    phoneField.addEventListener('keydown', (evt) => {
+      let phoneValue = phoneField.value.replace(/\D+/g, '');
+      if (evt.keyCode === 8 && phoneValue.length === 1) {
+        phoneField.value = '';
+      }
     });
 
     checkboxField.addEventListener('change', (evt) => {
