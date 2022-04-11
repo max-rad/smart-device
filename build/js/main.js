@@ -604,12 +604,12 @@ var validation = function validation() {
         nameField.setCustomValidity('Name is required.');
         nameField.reportValidity();
         nameField.focus();
-      } else if (phoneField === '') {
+      } else if (phoneField.value === '') {
         evt.preventDefault();
         phoneField.setCustomValidity('Phone is required.');
         phoneField.reportValidity();
         phoneField.focus();
-      } else if (!phonePattern.test(phoneField.value)) {
+      } else if (!phonePattern.test(phoneField.value) && phoneField.value !== '') {
         evt.preventDefault();
         phoneField.setCustomValidity('Invalid phone number.');
         phoneField.reportValidity();
