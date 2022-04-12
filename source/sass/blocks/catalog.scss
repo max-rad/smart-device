@@ -55,11 +55,14 @@
 }
 
 .catalog__list {
-  display: flex;
+  display:  grid;
+  grid-template-columns: repeat(3, minmax(260px ,350px));
   justify-content: center;
   column-gap: 4.8%;
+  row-gap: 85px;
 
   @include vp-1023 {
+    display: flex;
     flex-direction: column;
     align-items: center;
     column-gap: 30px;

@@ -22,6 +22,7 @@
 .feedback__wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   column-gap: 6.5%;
   padding: 165px 75px 248px;
 
@@ -38,9 +39,9 @@
     content: "";
     width: 510px;
     height: 285px;
-    margin-top: 80px;
+    margin-top: 20px;
     background-image: url("../img/content/feedback/paper-airplane-desktop.png");
-    background-size: 100% 100%;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: 0 0;
 
@@ -172,6 +173,8 @@
 
     @include vp-1023 {
       width: 670px;
+      max-width: unset;
+      min-width: unset;
       padding: 32px 15px;
     }
 
